@@ -1,4 +1,8 @@
-<a href="" class="list-group-item clearfix" (click)="onSelected()">
+<a
+style="cursor: pointer;"
+class="list-group-item clearfix"
+[routerLink]="[recipeId]"
+[routerLinkActive]="'active'">
 	<div class="pull-left">
 		<!-- for name/description, we're using string interpolation -->
 		<h4 class="list-group-item-heading">{{ recipe.name }}</h4>
