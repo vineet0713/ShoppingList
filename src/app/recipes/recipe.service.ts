@@ -1,5 +1,3 @@
-import { EventEmitter } from '@angular/core';
-
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 
@@ -16,8 +14,6 @@ export class RecipeService {
 			[new Ingredient('Chickpeas', 10)]
 		)
 	];
-
-	recipeSelected = new EventEmitter<Recipe>();
 
 	// Returns a new array that is a copy of 'recipes'!
 	getRecipes() { return this.recipes.slice(); }
