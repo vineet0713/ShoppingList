@@ -22,4 +22,8 @@ export class ShoppingListComponent implements OnInit {
 			this.ingredients.push(...newIngredients);
 		});
 	}
+
+	onEditItem(itemId: number) {
+		this.shoppinglistService.startedEditing.next(itemId);
+	}
 }

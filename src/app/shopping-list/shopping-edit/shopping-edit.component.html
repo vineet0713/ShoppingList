@@ -1,25 +1,43 @@
 <div class="row">
 	<div class="col-xs-12">
-		<form>
+		<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
 			<div class="row">
 				
 				<div class="col-sm-5 form-group">
 					<label for="name">Name</label>
-					<input type="text" id="name" class="form-control" #nameInput>
+					<input type="text" id="name" class="form-control" [formControlName]="'name'">
+					<span class="help-block"
+					*ngIf="editForm.get('name').valid === false && editForm.get('name').touched"
+					>Please enter an ingredient name!</span>
 				</div>
 
-				<div class="col-sm-2 form-group">
+				<div class="col-sm-3 form-group">
 					<label for="amount">Amount</label>
-					<input type="number" id="amount" class="form-control" #amountInput>
+					<input type="number" id="amount" class="form-control" [formControlName]="'amount'">
+					<span class="help-block"
+					*ngIf="editForm.get('amount').valid === false && editForm.get('amount').touched"
+					>Please enter an amount!</span>
 				</div>
 
 			</div>
 
 			<div class="row">
 				<div class="col-xs-12">
-					<button class="btn btn-success" type="submit" (click)="onAddItem()">Add</button>
-					<button class="btn btn-danger" type="button">Delete</button>
-					<button class="btn btn-primary" type="button">Clear</button>
+					<button class="btn btn-success"
+							type="submit"
+							[disabled]="editForm.invalid"
+							style="margin-right: 10px;">{{ editMode ? 'Update' : 'Add' }}</button>
+					
+					<button class="btn btn-danger"
+							type="button"
+							(click)="onDelete()"
+							style="margin-right: 10px;"
+							*ngIf="editMode">Delete</button>
+					
+					<button class="btn btn-primary"
+							type="button"
+							(click)="onClear()"
+							style="margin-right: 10px;">Clear</button>
 				</div>
 			</div>
 		</form>

@@ -12,9 +12,20 @@ export class ShoppingListService {
 
 	getIngredients() { return this.ingredients; }
 
+	getIngredient(index: number) { return this.ingredients[index]; }
+
 	addIngredient(newIngredient: Ingredient) {
 		this.ingredients.push(newIngredient);
 	}
 
+	updateIngredient(index: number, updatedIngredient: Ingredient) {
+		this.ingredients[index] = updatedIngredient;
+	}
+
+	deleteIngredient(index: number) {
+		this.ingredients.splice(index, 1);
+	}
+
 	ingredientsAdded = new Subject<Ingredient[]>();
+	startedEditing = new Subject<number>();
 }
