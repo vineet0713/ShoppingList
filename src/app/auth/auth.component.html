@@ -21,8 +21,9 @@
 		<div *ngIf="isLoading">
 			<app-loading-spinner></app-loading-spinner>
 		</div>
-		<div class="alert alert-danger" style="margin-top: 20px;" *ngIf="error">
+		<!-- <div class="alert alert-danger" style="margin-top: 20px;" *ngIf="error">
 			<p>{{ error }}</p>
-		</div>
+		</div> -->
+		<app-alert [message]="error" *ngIf="error" (closeEmitter)="onHandleError()"></app-alert>
 	</div>
 </div>
